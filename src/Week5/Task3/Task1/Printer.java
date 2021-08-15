@@ -1,10 +1,10 @@
-package Week5.Task3.Task2;
+package Week5.Task3.Task1;
 
 import Week5.Task2.ColoredTriangle;
 import Week5.Task2.ImmutablePoint;
 import Week5.Task2.Point;
-import Week5.Task3.Task1.User;
-import Week5.Task3.Task1.UserGroup;
+import Week5.Task1.User;
+import Week5.Task1.UserGroup;
 
 
 public class Printer {
