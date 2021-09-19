@@ -44,7 +44,7 @@ public class Main11 {
     public static String assertCollection(Collection<User> collection){
         if(collection instanceof List<?> || collection instanceof Set<?>){
             if(collection.size()!=5){
-                throw new NotEqualException("The size is not 5");
+                throw new NotEqualException("The size of the collection is not 5");
             }
         }
         else {
