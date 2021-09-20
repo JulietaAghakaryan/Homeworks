@@ -15,39 +15,26 @@ public class Runnable6 {
     public static void main(String[] args) {
 
 
-        List<Thread> list=new ArrayList<>();
-        for (int w = 0; w < 10; w++) {
+        List<Integer> list=new ArrayList<>();
+        List<Thread> threadList = new ArrayList<>();
+        for (int w = 0; w < 100; w++) {
 
-            File file = new File(String.format("files %d", w));
-            final String fileName = String.format("files %d", w);
             var thread = new Thread(() -> {
-                PrintWriter printWriter = null;
-                int i = 1;
-                try {
-                    printWriter = new PrintWriter(file);
-                } catch (FileNotFoundException e) {
-                    System.err.println("File not found");
-                    Thread.currentThread().interrupt();
+                int a;
+                if(list.size()==0){
+                    a=0;
+                }else{
+                    a  = list.get(list.size()-1);
                 }
-
-                while (!Thread.currentThread().isInterrupted() && i <= 10000) {
-                    printWriter.println(UUID.randomUUID().toString() + " " + i++);
-                }
-
-                if (printWriter != null) {
-                    printWriter.close();
-                }
-                try {
-                    long count = Files.lines(Path.of(fileName)).filter(s -> s.contains("ab")).count();
-                    System.out.println(fileName + " contains " + count + " ab");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                for(int i=0; i<500; i++){
+                    list.add(a+1);
+                    a++;
                 }
 
             });
-            list.add(thread);
+            threadList.add(thread);
         }
-        for (Thread thread: list) {
+        for (Thread thread: threadList) {
             thread.start();
             try
             {
@@ -60,6 +47,7 @@ public class Runnable6 {
                         " caught" + e);
             }
         }
+        System.out.println(list);
     }
 
 }
