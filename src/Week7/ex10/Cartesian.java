@@ -9,13 +9,11 @@ public class Cartesian {
     private int setY=0;
 
 
-    public void setX() {
-        this.x = setX++;
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y=y;
     }
 
-    public void setY() {
-        this.y = setY++;
-    }
 
     private int getX() {
 
